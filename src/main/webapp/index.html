@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <link rel="stylesheet" href="index.css"> -->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+html {
+  color-scheme: light dark;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://images.pexels.com/photos/16023919/pexels-photo-16023919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
+    no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* === Main Container === */
+#container {
+  background: rgba(16, 42, 40, 0.85);
+  border-radius: 18px;
+  padding: 50px 40px;
+  width: 90%;
+  max-width: 600px;
+  animation: slideUp 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #e0f2f1;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); /* Soft depth only */
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* === Typography === */
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #009688, #26a69a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+
+p,
+label,
+#errorMessage {
+  font-size: 15px;
+  color: #e0e0e0;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #009688, #26a69a);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #00796b, #00897b);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === Error Message === */
+#errorMessage {
+  color: #ef5350;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* === Results Output === */
+#output {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 13.5px;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  color: #2e2e2e;
+  width: 100%;
+  max-width: 520px;
+  margin-top: 20px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+  overflow-x: auto;
+  text-align: left;
+}
+
+#output h4 {
+  color: #90caf9;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+/* === Loading Spinner === */
+#loading {
+  text-align: center;
+  margin: 20px 0;
+  display: none;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  border: 4px solid #ccc;
+  border-top-color: #3f51b5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Responsive Enhancements === */
+@media (max-width: 480px) {
+  #container {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  input[type="text"],
+  button {
+    font-size: 14px;
+  }
+}
+
+</style>
+<title>Image Finder</title>
+
+</head>
+
+<body>
+
+	<div id="container">
+		<h2>Image Finder</h2>
+		<p>Enter a webpage URL to fetch images:</p>
+
+		<form id="imageForm">
+			<input type="text" id="urlInput" placeholder="Enter website URL"
+				required>
+			<button type="submit">Submit</button>
+			<p id="errorMessage"></p>
+		</form>
+		<div id="progressBarContainer">
+			<div id="progressBar"></div>
+		</div>
+
+		<div id="loading">
+			<div class="spinner"></div>
+			<p>Fetching images...</p>
+		</div>
+
+		<h3>Results:</h3>
+		<pre id="output">No images found yet...</pre>
+	</div>
+
+	<script src="index.js"></script>
+
+</body>
+
+</html>
