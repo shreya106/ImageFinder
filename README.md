@@ -48,3 +48,11 @@ Once the server starts, open your browser and navigate to:
 http://localhost:8080
 
 You can now enter a website URL in the input box to fetch and display image URLs!
+
+**OUTPUT SCREENSHOTS**
+<img width="1470" height="956" alt="Screenshot 2026-01-07 at 10 14 23 pm" src="https://github.com/user-attachments/assets/4d96d480-09fa-4e57-8ded-bb02ba5b58d5" />
+<img width="1470" height="956" alt="Screenshot 2026-01-07 at 10 17 22 pm" src="https://github.com/user-attachments/assets/8d4db7d0-985b-47f6-b8b7-ad3b0359a502" />
+<img width="1470" height="956" alt="Screenshot 2026-01-07 at 10 17 41 pm" src="https://github.com/user-attachments/assets/9ca3aa5e-a93d-4772-8af0-1c9bf89b15c9" />
+
+
+
